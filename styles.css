@@ -1,0 +1,99 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+#wrapper{
+  height:100vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+.container{
+  height:100%;
+  max-width:1200px;
+  margin:0 auto;
+  /* inorder to center the container and its contents i.e margin ka top bottom 0px and left right center kardo */
+  padding:20px;
+  /* wrapper and container ka bich ki spacing i.e border and content ka bich ki spacing*/
+}
+
+.container h1{
+  /* ya jo my gallery vala h1 tag hai na uspr ham css property laga rahe hai */
+  margin: 20px 100px;
+  /* margin ka top bottom 20px and left right 100px */
+  text-align: center;
+  /* margin-bottom: 20px; */
+  font-size: 3rem;
+}
+
+.gallery{
+  /* now hama joh img hai usko arrange karna uska liya hamna jis div mai voh sabh img hai na usko flex mai convert kar dia hai */
+  display: flex;
+  flex-wrap: wrap;
+  /* jo flex items hai usko multiple line mai convert karna ka liya hamna flex wrap ka use kiya hai */
+  justify-content: space-between;
+}
+
+
+.card {
+  width:32%;
+  /* jo baaki bacha hua 4% hai voh unka bich ki spacing mai kaam aa jayaga */
+  position:relative;
+  /* relative because hama fig caption ko overlap karvana card par toh isliya nearest parent ancestor ko relative kar diya hai */
+  margin-bottom: 20px;
+  border-radius: 10px;
+  /* card ka corner ko rounded karna ka liya */
+  overflow: hidden;
+}
+ 
+.card img{
+  
+  width:100%;
+  /* jitna card ki width hai utni puri width img ki ho jaya */
+  height:100%;
+  /* parent card ki default height ko 100% use karlo  */
+  filter: grayscale(100%);
+  /* filter lagadiya sabh image  */
+  box-shadow: 0 0 20px #333;
+  /* without hovering on image the image show small blur effect that why we use box-shadow */
+  object-fit: cover;
+  /* inorder to fit all image center to the card */
+}
+
+.card:hover {
+  transform: scale(1.03);
+  /* to increase size of each card */
+  transition: 0.5s;
+  filter: drop-shadow(0 0 10px #333);
+  /* exclusively feature to genrate a effect on card to cast shadow 
+  we can also acheive this same feature by applying box-shadow using blur and spread radius attribute*/
+}
+
+
+.card:hover img {
+  filter: grayscale(0%);
+  /* on hovering we have to remove the previous filter inorder to acheive its orginal colour*/
+}
+
+.card figcaption{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 25px;
+  width: 100%;
+  height: 20%;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  opacity: 0;
+  border-radius: 0 0 10px 10px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  transition: 0.3s;
+}
+
+.card:hover figcaption {
+  opacity: 1;
+  transform: scale(1.03);
+}  
